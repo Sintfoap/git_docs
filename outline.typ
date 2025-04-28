@@ -1,8 +1,12 @@
-#import "@preview/title:0.0.1": title
+#import "@local/title:0.0.1": title
 #show: doc => title(
   title: [
     Github and You
-  ], authors: ((name: "Ryan Moffitt", email: "rmoff938@students.bju.edu"),), date: ((year: 2024, month: 10, day: 17)), abstract: [Do later], doc,
+  ],
+  authors: ((name: "Ryan Moffitt", email: "rmoff938@students.bju.edu"),),
+  date: (year: 2024, month: 10, day: 17),
+  abstract: [Do later],
+  doc,
 )
 
 = Git Basics
@@ -78,7 +82,8 @@ initialize a repository is to navigate to _`https://github.com`_ and after
 logging in navigate to the user menu under `Your repositories`:
 
 #figure(
-  image("./swappy-20241104_203729.png"), caption: [Navigation to Repository Menu],
+  image("./swappy-20241104_203729.png"),
+  caption: [Navigation to Repository Menu],
 )
 
 Inside repositories, there is a button for creating a new repository.
@@ -386,7 +391,26 @@ back to it's base. Both of these are easily delt with using built in git
 capabilities.
 
 == Hard Reset
+
+So your branch is royally messed up. We've all been there.
+The best case here is to reset your branch to before you started working
+on your current feature, back at the HEAD ref. The HEAD ref is a reference order
+pointer to the base of your current feature branch, where it diverged
+from the main production branch. This gives you the option to always
+have a point to reset to when things inevetably go pear shaped. The two
+ways of reseting to the HEAD ref are the following commands:
+
+`git reset`
+
+`git revert HEAD`
+
+'git reset' is shorthand for 'git revert' under the hood, but both of those will put your branch back into, hopefully, the last working position.
+
 == Commit Based
+
+If you need to only jump back a commit or two, the procedure is a bit longer, but still pretty straight forward.
+First run `git log` in the directory that you wish to revert to a previous stage. The output should look something like this:
+
 
 = Documentation
 == README
