@@ -12,7 +12,7 @@
 = Git Basics
 == Termenology
 *Version Control System*: Github uses and is a version control system. Meaning
-that everytime a new version of the project is uploaded to github it makes a
+that every time a new version of the project is uploaded to github it makes a
 _snapshot_ of the project in its last state. This allows time travel to any
 point in the project where a new feature was added.
 
@@ -26,7 +26,7 @@ the source of truth for the project that everyone references.
 
 == Repositories
 Repositories are the folder-like structure that projects are stored in github.
-Repositories will also constantly be refered to as repos. Each repo will have
+Repositories will also constantly be referred to as repos. Each repo will have
 its own project history stored its commit log, accessed by running ```bash git log```.
 
 == Structure
@@ -37,22 +37,22 @@ further down, but in essence it holds the abstract of the project, installation
 instructions, and proper usage. Another file every repo will have is the
 *`.gitignore`* file. This is a special file that tells github which files to
 ignore when looking at changes to a file. It can also hold generalized rules for
-ignoring file types, for example one rule might be to ignore uploading all pdfs
+ignoring file types, for example one rule might be to ignore uploading all PDFs
 for a project that generates pdf outputs.
 
 = Github Authentication
-Creating a github account is easy enough to do, but githubs authentication
+Creating a github account is easy enough to do, but github's authentication
 system using those credentials can be a bit interesting. There are two ways to
 authenticate machines with the github servers: Authentication tokens and ssh
 keys. However, authentication tokens are finicky at best, so this paper will
 document how to setup using ssh keys. Highlighted below are the ways of setting
-up credentails on the three main operating systems.
+up credentials on the three main operating systems.
 
 In the terminal run
 "```bash ssh-keygen -t ed25519 -C "your_email@example.com"```"
 where the email is the email you registered your github account with. This
 generates an ssh key that github will use to authenticate your account with
-everytime you attempt to push or pull from a repository. When prompted to enter
+every time you attempt to push or pull from a repository. When prompted to enter
 the file in which to save your key hit enter. When prompted for a passphrase
 enter an easily memorable passphrase.
 
@@ -64,11 +64,11 @@ _ https://github.com/settings/keys _. The menu should look similar to Figure 1.
 
 #figure(image("./sshkeys.png"), caption: [SSH Key Menu])
 
-Select New SSH Key and enter a meaningful title into the the title box. Then
+Select New SSH Key and enter a meaningful title into the title box. Then
 paste the value that you copied from the id_pub file into the key box. Add the
 ssh key and you're set.
 
-The above instructions are for Windows. If you have a mac or linux computer the
+The above instructions are for Windows. If you have a mac or Linux computer the
 only thing that changes is the location where the ssh keys are stored by
 default, which is in the "~/.ssh/" directory.
 
@@ -112,7 +112,7 @@ Using the command line, run:
 
 ```bash git init {foldername}```
 
-This turns {foldername} into a git repository, and after that it will need to be
+This turns {folder name} into a git repository, and after that it will need to be
 attached to a remote repository for collaboration and data loss prevention
 reasons. You can do this by using the following command:
 
@@ -122,7 +122,7 @@ reasons. You can do this by using the following command:
 After creating a repository, the next step is to download a version of the
 repository to the programmers machine. This is what we call *pulling down a
 repository*. To do this, go to the desired repository on github.com. Under the "Clone"
-Button, copy the ssh url (see Figure 4).
+Button, copy the ssh URL (see Figure 4).
 
 #figure(image("./clone-repo.png"), caption: [Clone Repo])
 
@@ -173,11 +173,11 @@ in the commit. The most common way of creating a commit is as follows:
 
 ```bash git commit -m "{message}"```
 
-The message should be a sentance or two that outlines what was changed in the
+The message should be a sentence or two that outlines what was changed in the
 commit proper. For example, if the project was a todo application and the commit
 added some functionality for creating notifications a message could be, "Add
 functionality for sending push notifications." Commit messages should always be
-in the imperitive and should stay under 120 characters by convention.
+in the imperative and should stay under 120 characters by convention.
 
 == Pushing
 Now that the changes are packaged and ready to go we need to actually push those
@@ -202,7 +202,7 @@ branching.
 
 == Definition
 Branches are a functionality in version control systems that allow two
-independant paths of development. If this operation did not exist, then if two
+independent paths of development. If this operation did not exist, then if two
 programmers were working on the same project at the same time, one programmer
 might push a change to a file that he changed, say example.txt. Then when the
 other programmer who modified the same file in a different way attempted to push
@@ -222,7 +222,7 @@ that someone else has started, you will rather have to run:
 ```bash git branch -r```
 
 The -r flag represents setting the remote flag to true, making git show both
-local and remote branches. The remote branches will most likely be of the patter "origin/{branchname}"
+local and remote branches. The remote branches will most likely be of the patter "origin/{branch name}"
 
 == Switching
 There are multiple ways to switch and create branches depending on where you
@@ -232,7 +232,7 @@ branch for this case is to use the branch instruction for git:
 
 ```bash git branch {new-branch-name}```
 
-Where {new-branch-name} is whatever you wish to call your branch, conventinally
+Where {new-branch-name} is whatever you wish to call your branch, conventionally
 written in kebab case and briefly outlining what you're planning to introduce in
 the branch. For example, bringing back the todo app mentioned above, you might
 want to fix an issue where some todo notifications aren't showing up because of
@@ -264,7 +264,7 @@ This is semantically the same as calling:
 
 ```bash git checkout {new-branch-name}```
 
-just in one step.
+Just in one step.
 
 Now there is a specific case when you have accidentally developed on your local
 version of main when you were supposed to be developing on a branch off of main,
@@ -275,7 +275,7 @@ new branch in that way. Thankfully, there's another command for that case:
 
 ```bash git switch -c {new-branch-name}```
 
-which both creates a new branch and moves your local commits to it. You may have
+Which both creates a new branch and moves your local commits to it. You may have
 to revert main back to its current version, but we'll discuss that later.
 
 == Merging
@@ -288,7 +288,7 @@ development to another person then you'd want to push your branch up to the
 remote so that they can pull it to a local version on their machine. There is
 another step to doing this as well though. The remote repository currently knows
 nothing of your local branch, so you can't just push to a branch that doesn't
-exist. To remidiate this you can run the following command:
+exist. To remediate this you can run the following command:
 
 ```bash git push -u origin {branch-name}```
 
@@ -315,7 +315,7 @@ test-branch, run:
 
 ```bash git checkout main```
 
-which updates our example to look like so:
+Which updates our example to look like so:
 
 - main \<-
 - test-branch
@@ -329,12 +329,12 @@ merge our changes from test-branch into main, so we call:
 
 ```bash git merge test-branch```
 
-which merges test-branch into main. Assuming there are no issues, which again
+Which merges test-branch into main. Assuming there are no issues, which again
 we'll handle issues in the next section, then run:
 
 ```bash git push```
 
-pushing main to the remote repository and finishing our workflow.
+Pushing main to the remote repository and finishing our workflow.
 
 = Conflicts
 When dealing with a multi-user project, there are a number of cases in which we
@@ -370,7 +370,7 @@ INSERT PICTURE OF MERGE CONFLICT GIT STATUS
 When making resolutions to merge conflicts its important that you be respectful
 of other users code. Do not ever just accept your changes without thinking
 through the ramifications of deleting the other users progress. Most of the time
-it is acceptable and reccomended that you bring in other users that wrote the
+it is acceptable and recommended that you bring in other users that wrote the
 code to look at doing a merge between the two branches to make sure that all
 opinions and changes are brought into consideration. There are few worse
 feelings in development than introducing a bug that could've been avoided if
@@ -379,7 +379,7 @@ than just assuming it's old and deprecated.
 
 After you've fixed all the merge conflicts, you'll have to add all of the
 updated files to staging again and commit them again. The message should be
-something like "merging {branchname} into main" or something similar. After that
+something like "merging {branch name} into main" or something similar. After that
 you will be clear to push to main like normal.
 
 = Reverting
@@ -387,7 +387,7 @@ Occasionally someone will introduce a change that either creates a bug or
 doesn't really need to be there. In that case it's nice to be able to go
 backwards in the commit history to a certain point in time. There's also the
 case when you've accidentally committed on the wrong branch and want to set it
-back to it's base. Both of these are easily delt with using built in git
+back to it's base. Both of these are easily dealt with using built in git
 capabilities.
 
 == Hard Reset
@@ -397,8 +397,8 @@ The best case here is to reset your branch to before you started working
 on your current feature, back at the HEAD ref. The HEAD ref is a reference order
 pointer to the base of your current feature branch, where it diverged
 from the main production branch. This gives you the option to always
-have a point to reset to when things inevetably go pear shaped. The two
-ways of reseting to the HEAD ref are the following commands:
+have a point to reset to when things inevitably go pear shaped. The two
+ways of resetting to the HEAD ref are the following commands:
 
 `git reset`
 
@@ -411,8 +411,35 @@ ways of reseting to the HEAD ref are the following commands:
 If you need to only jump back a commit or two, the procedure is a bit longer, but still pretty straight forward.
 First run `git log` in the directory that you wish to revert to a previous stage. The output should look something like this:
 
+#figure(
+  image("./swappy-20250428_151641.png"),
+  caption: [git log],
+)
+
+Here you can see two commits, each with a commit id, an author, a date, and a commit message.
+Currently I'm on commit 4d00547ee..., but say I wanted to ditch this commit and go back to the last one.
+To do that, I can run the following command: `git revert 7ec077ad4875d0f775d660454617831b474abdabb`, as is the last commit id.
+Using this I can go back a hypothetically infinite number of commits either forward or backwards as need be.
+
 
 = Documentation
+A project is only as good as it can be understood. Documentation is the bane of a computer scientist Documentation is the bane of a computer scientist, mainly because it's hard to write good and understandable instructions. That's where the next two tools come into play into hopefully making a useable and understandable functioning product.
+
 == README
+A readme is the first document anyone will see about your project. It often sets the tone for
+the professionalism and dependability of the code. This is written in Github Markdown, but
+that's not too hard to learn and you can find a guide #underline(underline(link("https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet", "here")))
+Beyond that, It's just a simple matter of putting information in the right order. The way that most programmers do it is to follow something similar to #underline(link("https://github.com/othneildrew/Best-README-Template/blob/main/BLANK_README.md", "this")).
+Not all of these sections are required for a purely internal project, but most of the information is nice to have anyways.
+
 == Wiki
+
+The wiki is a blown up version of the README with all the information abstracted and elaborated on.
+You can find the place to start generating the wiki here:
+#figure(
+  image("./swappy-20250428_154134.png"),
+  caption: "wiki location",
+)
+From here you can generate pages similar to any other wiki software and fill them out using the same github markdown mentioned in the README section.
+
 
